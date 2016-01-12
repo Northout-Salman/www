@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Discovery</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" >
+<script src="js/jquery.min.js"></script>
+    <script src="js/jquery.editable.js" type="text/javascript"></script>
+    <script src="js/main.js" type="text/javascript"></script>
+    
+    <link type="text/css" href="css/jquery.jscrollpane.css" rel="stylesheet" media="all" />
+		<style type="text/css" id="page-css">
+			.scroll-pane { }
+			.horizontal-only { height: auto; max-height: 200px;	}
+		</style>
+    
+		<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+		<script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
+		<script type="text/javascript" id="sourcecode">
+			$(function()
+			{
+				$('.scroll-pane').each(
+					function()
+					{
+						$(this).jScrollPane(
+							{
+								showArrows: $(this).is('.arrow')
+							}
+						);
+						var api = $(this).data('jsp');
+						var throttleTimeout;
+						$(window).bind(
+							'resize',
+							function()
+							{
+								if (!throttleTimeout) {
+									throttleTimeout = setTimeout(
+										function()
+										{
+											api.reinitialise();
+											throttleTimeout = null;
+										},
+										10
+									);
+								}
+							}
+						);
+					}
+				)
+
+			});
+		</script>
+    <script>
+		(function($) {
+    var $window = $(window),
+        $html = $('html');
+
+    $window.resize(function resize(){
+        if ($window.width() < 600) {
+//			alert('hi');
+             $('.nav_ul').addClass('scroll-pane');
+        }
+		else {
+       		$('.nav_ul').removeClass('scroll-pane');
+		}	
+    }).trigger('resize');
+})(jQuery);
+		</script> 
+        
+         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+        <script>
+            /* REQUIRES jQuery & jQuery UI & Easing.JS */
+            $(document).ready(function () {
+                $(".post_tags_inner").draggable({
+                    axis: "x",
+                    scroll: false,
+                    stop: function () {
+                        var __left = $(this).css("left").replace(/[^-\d\.]/g, '');
+                        if (__left > 0) {
+                            $(this).animate({left: 0}, 400, 'easeOutExpo');
+                        }
+                        var __width = $(this).outerWidth();
+                        var __parentWidth = $(".post_tags.draggable").outerWidth();
+                        if (__width > __parentWidth) {
+                            if (__left < __parentWidth - __width) {
+                                $(this).animate({left: __parentWidth - __width}, 400, 'easeOutExpo');
+                            }
+                        } else {
+                            $(this).animate({left: 0}, 400, 'easeOutExpo');
+                        }
+                    }
+                });
+            });
+
+        </script>
+</head>
+
+<body>
+<div class="header">
+<div class="header-row">
+
+<div class="cell1"><img src="images/logo-company.png" class="logo" /></div>
+
+<div class="cell2">
+<div class="login-dropdown">
+    <button><img src="images/dropmenu-icon.png" /><span>Welcome :</span>  Administrator </button>
+    <ul class="login-dropdown-menu">
+        <li><a href="#home">My Account</a></li>
+        <li><a href="#about">Setting</a></li>
+        <li><a href="#contact">Dashboard</a></li>
+    </ul>
+</div></div>
+</div>
+<div class="header-row">
+<div class="cell3">
+<div class="slider-label">Select Potential Solutions</div>
+<article class='post'>
+                    <div class='post_tags draggable'>
+                        <div class='post_tags_inner'>
+<a class='my_link' new_id='1'  id='link_1'  href='#'><input type="checkbox" name="checkboxG4" id="checkboxG4" class="css-checkbox" /><label for="checkboxG4" class="css-label">DFF</label></a>
+<a class='my_link' new_id='1'  id='link_1'  href='#'><input type="checkbox" name="checkboxG4" checked id="checkboxG4" class="css-checkbox" /><label for="checkboxG4" class="css-label">MFF</label></a>
+<a class='my_link' new_id='1'  id='link_1'  href='#'><input type="checkbox" name="checkboxG4" id="checkboxG4" class="css-checkbox" /><label for="checkboxG4" class="css-label">Stack Holder</label></a>
+<a class='my_link' new_id='1'  id='link_1'  href='#'><input type="checkbox" name="checkboxG4" id="checkboxG4" class="css-checkbox" /><label for="checkboxG4" class="css-label">DFF</label></a>
+<a class='my_link' new_id='1'  id='link_1'  href='#'><input type="checkbox" name="checkboxG4" checked id="checkboxG4" class="css-checkbox" /><label for="checkboxG4" class="css-label">MFF</label></a>
+<a class='my_link' new_id='1'  id='link_1'  href='#'><input type="checkbox" name="checkboxG4" id="checkboxG4" class="css-checkbox" /><label for="checkboxG4" class="css-label">Stack Holder</label></a>
+<a class='my_link' new_id='1'  id='link_1'  href='#'><input type="checkbox" name="checkboxG4" id="checkboxG4" class="css-checkbox" /><label for="checkboxG4" class="css-label">DFF</label></a>
+<a class='my_link' new_id='1'  id='link_1'  href='#'><input type="checkbox" name="checkboxG4" checked id="checkboxG4" class="css-checkbox" /><label for="checkboxG4" class="css-label">MFF</label></a>
+<a class='my_link' new_id='1'  id='link_1'  href='#'><input type="checkbox" name="checkboxG4" id="checkboxG4" class="css-checkbox" /><label for="checkboxG4" class="css-label">Stack Holder</label></a>
+<a class='my_link' new_id='1'  id='link_1'  href='#'><input type="checkbox" name="checkboxG4" id="checkboxG4" class="css-checkbox" /><label for="checkboxG4" class="css-label">DFF</label></a>
+<a class='my_link' new_id='1'  id='link_1'  href='#'><input type="checkbox" name="checkboxG4" checked id="checkboxG4" class="css-checkbox" /><label for="checkboxG4" class="css-label">MFF</label></a>
+<a class='my_link' new_id='1'  id='link_1'  href='#'><input type="checkbox" name="checkboxG4" id="checkboxG4" class="css-checkbox" /><label for="checkboxG4" class="css-label">Stack Holder</label></a>
+<a class='my_link' new_id='1'  id='link_1'  href='#'><input type="checkbox" name="checkboxG4" id="checkboxG4" class="css-checkbox" /><label for="checkboxG4" class="css-label">DFF</label></a>
+<a class='my_link' new_id='1'  id='link_1'  href='#'><input type="checkbox" name="checkboxG4" checked id="checkboxG4" class="css-checkbox" /><label for="checkboxG4" class="css-label">MFF</label></a>
+<a class='my_link' new_id='1'  id='link_1'  href='#'><input type="checkbox" name="checkboxG4" id="checkboxG4" class="css-checkbox" /><label for="checkboxG4" class="css-label">Stack Holder</label></a>
+<a class='my_link' new_id='1'  id='link_1'  href='#'><input type="checkbox" name="checkboxG4" id="checkboxG4" class="css-checkbox" /><label for="checkboxG4" class="css-label">DFF</label></a>
+<a class='my_link' new_id='1'  id='link_1'  href='#'><input type="checkbox" name="checkboxG4" checked id="checkboxG4" class="css-checkbox" /><label for="checkboxG4" class="css-label">MFF</label></a>
+<a class='my_link' new_id='1'  id='link_1'  href='#'><input type="checkbox" name="checkboxG4" id="checkboxG4" class="css-checkbox" /><label for="checkboxG4" class="css-label">Stack Holder</label></a>
+
+                           
+                        </div>
+        </div>
+      </article>
+ </div>
+<div class="cell4"><a href="#">Toolkit View</a><span>|</span><a href="#">Records</a></div>
+</div>
+<!--
+ 
+-->
+ 
+</div>
+
+<!--<div class="breadcrumb">
+<div><a href="#">Home</a><span> > </span><a href="#">Admin</a><span> > </span><a href="#">Company</a><span> > </span>New Talk Track</div>
+</div>
+-->
+<div class="no-content">You have not yet selected a solution.</div>
+
+<div class="show-content">
+<div class="left-panel-3">
+<div class="nav-scroll scroll-pane">
+<nav class="sidenav-primary">
+<div class="nav-handler">
+<div><span>Select Nav</span>
+<ul class="nav_ul">
+<li><a href="#">INTRODUCTION</a></li>
+<li><a href="#">OUTCOME STORY</a></li>
+<li><a href="#">DISCOVERY</a></li>
+<li><a href="#">BUYING OUTCOMES</a></li>
+<li><a href="#">BUYING ROADMAP</a></li>
+<li><a href="#">OUTCOME STORY</a></li>
+<li><a href="#">DISCOVERY</a></li>
+<li><a href="#">BUYING OUTCOMES</a></li>
+<li><a href="#">BUYING ROADMAP</a></li>
+<li><a href="#">INTRODUCTION</a></li>
+<li><a href="#">OUTCOME STORY</a></li>
+<li><a href="#">DISCOVERY</a></li>
+<li><a href="#">BUYING OUTCOMES</a></li>
+<li><a href="#">BUYING ROADMAP</a></li>
+<li><a href="#">OUTCOME STORY</a></li>
+<li><a href="#">DISCOVERY</a></li>
+<li><a href="#">BUYING OUTCOMES</a></li>
+<li><a href="#">BUYING ROADMAP</a></li>
+</ul>
+</div>
+</div>
+</nav></div>
+<nav class="sidenav-secondary">
+<button>Generate Script</button>
+<button disabled>Generate Email</button>
+</nav>
+</div>
+<div class="mid-panel-3">
+<div class="rep-form-bg scroll-pane">
+<div class="questions-wrap">
+<h1>Buying Outcome</h1>
+
+<div class="question-block">
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+<p class="indent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis eros ut enim laoreet facilisis. Fusce molestie non felis eu finibus. Donec id nulla vel felis efficitur</p>
+<p class="indent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+<p class="indent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis eros ut enim laoreet facilisis. Fusce molestie non felis eu finibus. Donec id nulla vel felis efficitur</p>
+<span><input type="checkbox" name="checkbox1" id="checkbox1" class="css-checkbox-square" /><label for="checkbox1" class="css-label-square"></label></span>
+</div>
+
+<div class="question-block">
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+<p class="indent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis eros ut enim laoreet facilisis. Fusce molestie non felis eu finibus. Donec id nulla vel felis efficitur</p>
+<p class="indent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis eros ut enim laoreet facilisis. Fusce molestie non felis eu finibus. Donec id nulla vel felis efficitur</p>
+<p class="indent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+<span><input type="checkbox" name="checkbox1" id="checkbox2" class="css-checkbox-square" /><label for="checkbox2" class="css-label-square"></label></span>
+</div>
+
+<div class="question-block">
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis eros ut enim laoreet facilisis. Fusce molestie non felis eu finibus. Donec id nulla vel felis efficitur</p>
+<p class="indent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+<p class="indent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+<p class="indent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+<span></span>
+</div>
+
+<div class="question-block">
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+<p class="indent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis eros ut enim laoreet facilisis. Fusce molestie non felis eu finibus. Donec id nulla vel felis efficitur</p>
+<p class="indent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+<p class="indent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis eros ut enim laoreet facilisis. Fusce molestie non felis eu finibus. Donec id nulla vel felis efficitur</p>
+<span><input type="checkbox" name="checkbox1" id="checkbox3" class="css-checkbox-square" /><label for="checkbox3" class="css-label-square"></label></span>
+</div>
+
+<div class="question-block">
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis eros ut enim laoreet facilisis. Fusce molestie non felis eu finibus. Donec id nulla vel felis efficitur</p>
+<p class="indent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+<p class="indent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis eros ut enim laoreet facilisis. Fusce molestie non felis eu finibus. Donec id nulla vel felis efficitur</p>
+<p class="indent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+<span><input type="checkbox" name="checkbox1" id="checkbox4" class="css-checkbox-square" /><label for="checkbox4" class="css-label-square"></label></span>
+</div>
+
+</div>
+
+
+
+
+</div>
+
+</div>
+
+
+
+<div class="right-panel-3">
+<h2>Notes</h2>
+ 
+      <div class="notes-container scroll-pane"><div class="notes-wrap">
+      
+      <div style="width:70%; margin:0px auto; float:none; text-align:center; margin-top:30vh;">You can add notes after you generate script.</div>
+      </div></div>
+      
+    
+       
+</div>
+</div>
+
+</body>
+</html>

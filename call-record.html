@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Call Record</title>
+<link href="css/style.css" rel="stylesheet"  />
+<script src="js/jquery.min.js"></script>
+    <script src="js/jquery.editable.js" type="text/javascript"></script>
+    <script src="js/main.js" type="text/javascript"></script>
+    
+    <link type="text/css" href="css/jquery.jscrollpane.css" rel="stylesheet" media="all" />
+		<style type="text/css" id="page-css">
+			.scroll-pane { }
+			.horizontal-only { height: auto; max-height: 200px;	}
+		</style>
+    
+		<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+		<script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
+		<script type="text/javascript" id="sourcecode">
+			$(function()
+			{
+				$('.scroll-pane').each(
+					function()
+					{
+						$(this).jScrollPane(
+							{
+								showArrows: $(this).is('.arrow')
+							}
+						);
+						var api = $(this).data('jsp');
+						var throttleTimeout;
+						$(window).bind(
+							'resize',
+							function()
+							{
+								if (!throttleTimeout) {
+									throttleTimeout = setTimeout(
+										function()
+										{
+											api.reinitialise();
+											throttleTimeout = null;
+										},
+										10
+									);
+								}
+							}
+						);
+					}
+				)
+
+			});
+		</script>
+        
+         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+        <script>
+            /* REQUIRES jQuery & jQuery UI & Easing.JS */
+            $(document).ready(function () {
+                $(".post_tags_inner").draggable({
+                    axis: "x",
+                    scroll: false,
+                    stop: function () {
+                        var __left = $(this).css("left").replace(/[^-\d\.]/g, '');
+                        if (__left > 0) {
+                            $(this).animate({left: 0}, 400, 'easeOutExpo');
+                        }
+                        var __width = $(this).outerWidth();
+                        var __parentWidth = $(".post_tags.draggable").outerWidth();
+                        if (__width > __parentWidth) {
+                            if (__left < __parentWidth - __width) {
+                                $(this).animate({left: __parentWidth - __width}, 400, 'easeOutExpo');
+                            }
+                        } else {
+                            $(this).animate({left: 0}, 400, 'easeOutExpo');
+                        }
+                    }
+                });
+            });
+
+        </script>
+        
+        
+      <!--  ----------------Notes Script---------------------------->
+    <script>
+    $(document).on('keydown', '.newTextArea', function () {
+        var d = new Date();
+        var m = d.getMinutes();
+        var s = d.getSeconds();
+        var num = m+'_'+s;
+
+        var dat = d.getDate()+'/'+d.getMonth()+1+'/'+d.getFullYear()+' '+d.getHours()+':'+d.getMinutes();
+
+        var message = $(this).val();
+        if (event.keyCode == 13) {
+            if (message == "") {
+                alert("Enter Some Text In Textarea");
+            } else {
+//$('#my_form').submit();
+                //$(".my_forms").html('');
+                $(".newTextArea").remove();
+                $('.my_forms').append('<div id="div_text_'+num+'" row_num="'+num+'"   class="w_200 div_text">' + message + '</div><div id="newTextAreaDate_'+num+'">'+dat+'</div>');
+                $('.my_forms').append('<div id="my_form_'+num+'" row_num="'+num+'" class="my_form"><textarea id="text_'+num+'" row_num="'+num+'" placeholder="Your Message..."  onkeyup="textAreaAdjust(this)" style="overflow:hidden;" class="w_200 newTextArea" ></textarea><div>')
+//alert("Succesfully submitted:- " + message);
+            }
+            $("textarea").val('');
+            return false;
+        }
+    });
+
+
+    $(document).on('click', '.div_text', function () {
+        var num = $(this).attr('row_num');
+        var div_text = $(this).html();
+        //alert(div_text);
+        $("#div_text_"+num).remove();
+        $("#newTextAreaDate_"+num).remove();
+        $('#my_form_'+num).html('<textarea id="text_'+num+'" row_num="'+num+'" placeholder="Your Message..."  onkeyup="textAreaAdjust(this)" style="overflow:hidden;" class="w_200 newTextArea" >' + div_text + '</textarea>');
+        $("#text").trigger('keyup');
+    });
+
+    function textAreaAdjust(o) {
+        o.style.height = "1px";
+        o.style.height = (25 + o.scrollHeight) + "px";
+    }
+
+
+</script>
+</head>
+
+<body>
+<div class="header">
+<div class="header-row">
+<div class="cell1"><img src="images/logo-company.png" class="logo" /></div>
+<div class="cell2"><div class="login-dropdown">
+    <button><img src="images/dropmenu-icon.png" /><span>Welcome :</span>  Administrator </button>
+    <ul class="login-dropdown-menu">
+        <li><a href="#home">My Account</a></li>
+        <li><a href="#about">Setting</a></li>
+        <li><a href="#contact">Dashboard</a></li>
+    </ul>
+</div></div>
+</div>
+<div class="header-row">
+<div class="cell3">
+RichardFreeman@ClevelandClinic.com
+ </div>
+<div class="cell4"><a href="#">Toolkit View</a><span>|</span><a href="#">Records</a></div>
+</div>
+<!--
+ 
+-->
+ 
+</div>
+
+<!--<div class="breadcrumb">
+<div><a href="#">Home</a><span> > </span><a href="#">Admin</a><span> > </span><a href="#">Company</a><span> > </span>New Talk Track</div>
+</div>
+-->
+<div class="no-content">You have not yet selected a solution.</div>
+
+<div class="show-content">
+
+
+<div class="left-panel-2">
+<div class="half-wrap">
+<h1>Script</h1>
+<div class="script-content-box scroll-pane">
+<div class="script-content-wrap"><H2>Introduction</H2>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis eros ut enim laoreet facilisis. Fusce molestie non felis eu finibus. Donec id nulla vel felis efficiturLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis eros ut enim laoreet facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce molestie non felis eu finibus. Donec id nulla vel felis efficiturLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis eros ut enim laoreet facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Fusce molestie non felis eu finibus. Donec id nulla vel felis efficiturLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis eros ut enim laoreet facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Fusce molestie non felis eu finibus. Donec id nulla vel felis efficiturLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis eros ut enim laoreet facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Fusce molestie non felis eu finibus. Donec id nulla vel felis efficiturLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis eros ut enim laoreet facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce molestie non felis eu finibus. Donec id nulla vel felis efficiturLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis eros ut enim laoreet facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Fusce molestie non felis eu finibus. Donec id nulla vel felis efficiturLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis eros ut enim laoreet facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Fusce molestie non felis eu finibus. Donec id nulla vel felis efficiturLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis eros ut enim laoreet facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Fusce molestie non felis eu finibus. Donec id nulla vel felis efficiturLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis eros ut enim laoreet facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Fusce molestie non felis eu finibus. Donec id nulla vel felis efficiturLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis eros ut enim laoreet facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Fusce molestie non felis eu finibus. Donec id nulla vel felis efficiturLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis eros ut enim laoreet facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+
+
+</div>
+</div> 
+
+<div class="half-wrap fright">
+<h1>Follow Up Email</h1>
+<div class="script-content-box  scroll-pane">
+<div class="script-content-wrap2" contenteditable>Dear Richard<br /><br />
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis eros ut enim laoreet facilisis. Fusce molestie non felis eu finibus. Donec id nulla vel felis efficiturLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis eros ut enim laoreet facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce molestie non felis eu finibus. Donec id nulla vel felis efficiturLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis eros ut enim laoreet facilisis. </div>
+
+</div>
+</div>
+
+<input name="" type="button" value="Save" class="btn-submit-script" />
+
+
+
+ 
+ 
+
+</div>
+
+
+
+<div class="right-panel-3">
+<h2>Notes</h2>
+      <div class="notes-container scroll-pane"><div class="notes-wrap">
+      <div class="my_forms">
+    <div id="my_form_1" row_num="1" class="my_form">
+        <textarea id="text" placeholder="Your Message..."   onkeyup="textAreaAdjust(this)" style="overflow:hidden" class="w_200 newTextArea"></textarea>
+    </div>
+ </div>
+      </div></div>
+      
+    
+       
+</div>
+</div>
+
+</body>
+</html>

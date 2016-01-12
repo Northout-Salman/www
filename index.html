@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Winalytics Admin</title>
+<link href='css/dragula.css' rel='stylesheet' />
+<link href="css/jquery.domenu-0.48.53.css" rel="stylesheet" />
+<link href="css/style.css" rel="stylesheet" />
+<script src="js/jquery.min.js"></script>
+    <script src="js/jquery.editable.js" type="text/javascript"></script>
+    <script src="js/main.js" type="text/javascript"></script>
+ <script type="text/javascript">
+        // double click
+        $(".city .editable").editable("dblclick", function(e){
+          alert(e.old_value + " => " + e.value);
+        });
+    </script>
+    
+    
+    <link type="text/css" href="css/jquery.jscrollpane.css" rel="stylesheet" media="all" />
+		<style type="text/css" id="page-css">
+			.scroll-pane { }
+			.horizontal-only { height: auto; max-height: 200px;	}
+		</style>
+    
+		<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+		<script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
+		<script type="text/javascript" id="sourcecode">
+			$(function()
+			{
+				$('.scroll-pane').each(
+					function()
+					{
+						$(this).jScrollPane(
+							{
+								showArrows: $(this).is('.arrow')
+							}
+						);
+						var api = $(this).data('jsp');
+						var throttleTimeout;
+						$(window).bind(
+							'resize',
+							function()
+							{
+								if (!throttleTimeout) {
+									throttleTimeout = setTimeout(
+										function()
+										{
+											api.reinitialise();
+											throttleTimeout = null;
+										},
+										10
+									);
+								}
+							}
+						);
+					}
+				)
+
+			});
+		</script>
+        
+        
+</head>
+
+<body>
+<div class="header">
+<div class="header-row">
+<div class="cell1"><img src="images/logo-company.png" class="logo" /></div>
+<div class="cell2"><div class="login-dropdown">
+    <button><img src="images/dropmenu-icon.png" /><span>Welcome :</span>  Administrator </button>
+    <ul class="login-dropdown-menu">
+        <li><a href="#home">My Account</a></li>
+        <li><a href="#about">Setting</a></li>
+        <li><a href="#contact">Dashboard</a></li>
+    </ul>
+</div></div>
+</div>
+<div class="header-row">
+<div class="cell3">
+  <h1>New Talk Track</h1>
+ </div>
+<div class="cell4"></div>
+</div>
+ </div>
+ 
+
+<!--<div class="breadcrumb">
+<div><a href="#">Home</a><span> > </span><a href="#">Admin</a><span> > </span><a href="#">Company</a><span> > </span>New Talk Track</div>
+</div>
+-->
+<div class="no-content">You have not yet selected a solution.</div>
+
+<div class="show-content">
+<div class="left-panel-3">
+<div class="admin-nav-wrap scroll-pane">
+<div class="draggable-nav">
+    <div class='wrapper'>
+      <div id='sortable' class='container'>
+        <div> <p class="name"><span class="editable">New Section</span></p></div>
+        <div>Discovery</div>
+        <div>About Us</div>
+        <div>Gap Solution</div>
+        <div>Buying Roadmap</div>
+         
+         
+      </div>
+    </div>
+    
+  </div>
+  </div>
+  <a href="#" class="btn-add-items"><img src="images/plus.png" width="17" height="18" /></a>
+</div>
+
+
+<div class="right-panel-2">
+<!--<div class="divtext" contentEditable>Hello World</div>-->
+
+ <div class="admin-form-bg">
+
+                    <div class="dd" id="domenu-1">
+
+
+                        <!-- .dd-item-blueprint is a template for all .dd-item's -->
+                        <li class="dd-item-blueprint">
+                            <div class="dd-handle dd3-handle">Drag</div>
+                            <div class="dd3-content">
+                                <span>[item_name]</span>
+                                <div class="button-container">
+                                    <button class="item-add">+</button>
+                                    <button class="item-remove" data-confirm-class="item-remove-confirm">&times;</button>
+                                </div>
+                                <div class="dd-edit-box" style="display: none;">
+                                    <input type="text" name="title" autocomplete="off" placeholder="Item" data-placeholder="Any nice idea for the title?" data-default-value="doMenu List Item. {?numeric.increment}">
+
+                                        <i class="end-edit">&#x270e;</i>
+                                </div>
+                            </div>
+                            <div class="myForm hide">
+                                <div><input placeholder="How much are you raising each year? And do you need to maintain/increase it?" type="text" class="dt-input" /></div>
+                                <div><textarea></textarea></div>
+                                <div><select><option>Nest under...</option><option>Nest under...</option><option>Nest under...</option><option>Nest under...</option></select></div>
+                                <div><input class="save_btn" value="Save" /></div>
+
+                            </div>
+                        </li>
+
+                        <ol class="dd-list"></ol>
+                        <button id="domenu-add-item-btn" class="dd-new-item">+</button>
+                    </div>
+
+
+                </div>
+
+</div>
+
+
+
+
+
+
+
+ </div>
+<script src='js/dragula.js'></script>
+<script src='js/example.min.js'></script>
+
+<script src="js/jquery.domenu-0.48.53.js"></script>
+    <script>
+
+                $(document).ready(function ()
+                {
+
+                    var updateOutput = function (e)
+                    {
+                        var list = e.length ? e : $(e.target),
+                                output = list.data('output');
+                        if (window.JSON) {
+                            output.val(window.JSON.stringify(list.domenu('serialize')));//, null, 2));
+                        } else {
+                            output.val('JSON browser support required for this demo.');
+                        }
+                    };
+
+                    $('#domenu-1').domenu({
+                        slideAnimationDuration: 0,
+                        onDomenuInitialized: [function () {
+                                console.log('event: onDomenuInitialized', 'arguments:', arguments, 'context:', this);
+                            }],
+                        //data: '[{"id":11,"title":"First question here","http":"","superselect":"2"},{"id":10,"title":"News","http":"","superselect":"1"},{"id":9,"title":"Categories","http":"","superselect":"1"},{"id":6,"title":"Shop","http":"","children":[{"id":5,"title":"Glass","http":"","superselect":"1"},{"title":"Other","superselect":"select something..."}],"superselect":"select something..."},{"id":1,"title":"About","http":"","superselect":"select something..."},{"id":1,"title":"About Me","http":"","superselect":"select something..."}]'
+                        data: '[]'
+                    }).parseJson()
+                            .onParseJson(function () {
+                                console.log('event: onFromJson', 'arguments:', arguments, 'context:', this);
+                            })
+                            .onToJson(function () {
+                                console.log('event: onToJson', 'arguments:', arguments, 'context:', this);
+                            })
+                            .onSaveEditBoxInput(function () {
+                                console.log('event: onSaveEditBoxInput', 'arguments:', arguments, 'context:', this);
+                            })
+                            .onItemDrag(function () {
+                                console.log('event: onItemDrag', 'arguments:', arguments, 'context:', this);
+                            })
+                            .onItemDrop(function () {
+                                console.log('event: onItemDrop', 'arguments:', arguments, 'context:', this);
+                            })
+                            .onItemAdded(function () {
+                                console.log('event: onItemAdded', 'arguments:', arguments, 'context:', this);
+                            })
+                            .onItemRemoved(function () {
+                                console.log('event: onItemRemoved', 'arguments:', arguments, 'context:', this);
+                            })
+                            .onItemStartEdit(function () {
+                                $('.myForm').removeClass('hide');
+                                console.log('event: onItemStartEdit', 'arguments:', arguments, 'context:', this);
+                            })
+                            .onItemEndEdit(function () {
+                                $('.myForm').addClass('hide');
+                                console.log('event: onItemEndEdit', 'arguments:', arguments, 'context:', this);
+                            })
+                            .onItemAddChildItem(function () {
+                                console.log('event: onItemAddChildItem', 'arguments:', arguments, 'context:', this);
+                            });
+                });
+
+
+                $(document).on('click', '.save_btn', function () {
+                    $(".end-edit").trigger('click');
+                });
+        </script>
+
+
+ </body>
+</html>

@@ -1,0 +1,86 @@
+.admin-nav-wrap {display:block; margin:30px 0 20px 0;  width:100%; height:74%; overflow:auto;}
+.draggable-nav { display:block; margin:0 auto; float:none; width:100%; color:#fff; height:84%; }
+#sortable Div { width:100%; padding:7% 0px; background:#202634; margin-bottom:10px; text-transform:uppercase; text-align:center; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
+
+#sortable Div {display:block; width:100%; font-size:.9vw; padding:12px 0; text-align:center; color:#EBEBEB; border:1px solid #8B98B6; background:#202633; margin-bottom:10px;  -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; text-decoration:none; margin:5px auto; float:left; box-sizing:border-box; -webkit-box-sizing:border-box;}
+#sortable Div {width:90%; margin:0 5% 10px 5%; }
+
+
+.gu-mirror {
+  position: fixed !important;
+  margin: 0 !important;
+  z-index: 9999 !important; color:#fff; text-transform:uppercase; text-align:center;  background-color:#202634; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;
+  opacity: 1.0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: alpha(opacity=100);
+-moz-transform: rotate(5deg);
+-webkit-transform: rotate(5deg);
+-o-transform: rotate(5deg);
+-ms-transform: rotate(5deg);
+transform: rotate(5deg);
+}
+.gu-hide {
+  display: none !important;
+}
+.gu-unselectable {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+.gu-transit {
+  opacity: 0.0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+}
+
+
+/* dragula-specific example page styles */
+.wrapper {
+  display: table; width:100%;
+}
+.container {
+  display: table-cell;
+  background-color: none;
+  width: 50%;
+}
+.container:nth-child(odd) {
+  background-color:none;
+}
+/*
+ * note that styling gu-mirror directly is a bad practice because it's too generic.
+ * you're better off giving the draggable elements a unique class and styling that directly!
+ */
+ .container > div {
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+.gu-mirror {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+.container .ex-moved {
+  background-color: #e74c3c;
+}
+.container.ex-over {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+#left-lovehandles > div,
+#right-lovehandles > div {
+  cursor: initial;
+}
+.handle {
+  padding: 0 5px;
+  margin-right: 5px;
+  background-color: rgba(0, 0, 0, 0.4);
+  cursor: move;
+}
+.image-thing {
+  margin: 20px 0;
+  display: block;
+  text-align: center;
+}
+
